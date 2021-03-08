@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Concrete.Mapping
+namespace DataAccess.Concrete.EntityFramework.Mapping
 {
     public class PositionMap : IEntityTypeConfiguration<Position>
     {
