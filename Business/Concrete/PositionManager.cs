@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities;
@@ -19,6 +21,7 @@ namespace Business.Concrete
             _positionDal = positionDal;
         }
 
+        [ValidationAspect(typeof(PositionValidator))]
         public async Task<IResult> AddAsync(Position entity)
         {
             await _positionDal.AddAsync(entity);
@@ -41,6 +44,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Position>(await _positionDal.GetAsync(x => x.Id == id));
         }
 
+        [ValidationAspect(typeof(PositionValidator))]
         public async Task<IResult> UpdateAsync(Position entity)
         {
             await _positionDal.UpdateAsync(entity);
